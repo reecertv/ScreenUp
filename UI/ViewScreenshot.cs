@@ -51,16 +51,42 @@ namespace ScreenUp.UI
             labScreenshotName.Text = "SC-" + year + month + day;
 
             // Date
+            string scname = labScreenshotName.Text;
+            int i = 0;
+
+            StringBuilder buildY = new StringBuilder();
+            StringBuilder buildM = new StringBuilder();
+            StringBuilder buildD = new StringBuilder();
+
+            foreach (char c in scname)
+            {
+                i = i + 1;
+
+                if (i == 4 || i == 5 || i == 6 || i == 7)
+                {
+                    buildY.Append(c);
+                }
+                else if (i == 8 || i == 9 )
+                {
+                    buildM.Append(c);
+                }
+                else if (i == 10 || i == 11)
+                {
+                    buildD.Append(c);
+                }
+            }
+
+            labDate.Text = buildM.ToString() + "." + buildD.ToString() + "." + buildY.ToString();
 
             // Res
             labRes.Text = bounds.Width + "x" + bounds.Height;
 
-            // User
+            DiscordRPC.Initialize();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void ViewScreenshot_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+            DiscordRPC.Deinitialize();
         }
 
         private void btnCopy_Click(object sender, EventArgs e)

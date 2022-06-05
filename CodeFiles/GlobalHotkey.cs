@@ -143,7 +143,14 @@ namespace ScreenUp
             {
                 if (HotKeyPressed != null)
                 {
-                    HotKeyPressed(mHotKeyList[(short)m.WParam].HotKeyID);
+                    try
+                    {
+                        HotKeyPressed(mHotKeyList[(short)m.WParam].HotKeyID);
+                    } catch (Exception ex)
+                    {
+
+                    }
+     
                 }
             }
             return false;

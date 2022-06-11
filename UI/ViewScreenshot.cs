@@ -86,7 +86,7 @@ namespace ScreenUp.UI
 
         private void btnUpload_Click(object sender, EventArgs e)
         {
-            
+            btnUpload = null;
         }
 
         private void btnClose_Click(object sender, EventArgs e)

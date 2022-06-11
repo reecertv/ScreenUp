@@ -113,7 +113,7 @@ namespace ScreenUp.UI
                     }
                     catch (Exception ex)
                     {
-
+                        Console.WriteLine(ex.Message);
                     }
                 }
                 else
@@ -145,7 +145,7 @@ namespace ScreenUp.UI
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
         }
         private void btnDelete_MouseEnter(object sender, EventArgs e)

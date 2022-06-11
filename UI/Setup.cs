@@ -20,18 +20,13 @@ namespace ScreenUp.UI
 
         private void SetUpScreenshotFolder_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.Region = System.Drawing.Region.FromHrgn(RoundCorners.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
 
-        }
-
-        private void btnBrowse_Click(object sender, EventArgs e)
-        {
-            fbdMain.Description = "Select Folder";
-
-            if (fbdMain.ShowDialog() == DialogResult.OK)
+            if (Properties.Settings.Default.FirstStart == 0)
             {
-                Properties.Settings.Default.ScreenshotFolder = fbdMain.SelectedPath;
-                txtSCFolder.Text = fbdMain.SelectedPath;
-            }
+                Properties.Settings.Default.BoundsSelectedScreens = Screen.PrimaryScreen.Bounds;
+            }           
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -53,6 +48,22 @@ namespace ScreenUp.UI
         private void Setup_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnBrowseFolder_Click(object sender, EventArgs e)
+        {
+            fbdMain.Description = "Select Folder";
+
+            if (fbdMain.ShowDialog() == DialogResult.OK)
+            {
+                Properties.Settings.Default.ScreenshotFolder = fbdMain.SelectedPath;
+                txtSCFolder.Text = fbdMain.SelectedPath;
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -56,7 +56,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodeFiles\DiscordRPC.cs" />
+    <Compile Include="CodeFiles\Generate.cs" />
     <Compile Include="CodeFiles\GlobalHotkey.cs" />
+    <Compile Include="CodeFiles\RoundCorners.cs" />
+    <Compile Include="CodeFiles\Screenshot.cs" />
+    <Compile Include="CodeFiles\UploadTo.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +74,18 @@
     </Compile>
     <Compile Include="UI\ScreenshotBrowser.Designer.cs">
       <DependentUpon>ScreenshotBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SelectScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SelectScreen.Designer.cs">
+      <DependentUpon>SelectScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Setup.cs">
       <SubType>Form</SubType>
@@ -94,9 +110,16 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UI\ScreenshotBrowser.resx">
       <DependentUpon>ScreenshotBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SelectScreen.resx">
+      <DependentUpon>SelectScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Setup.resx">
       <DependentUpon>Setup.cs</DependentUpon>
@@ -119,6 +142,26 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open-folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash-bin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file-upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\external-content.duckduckgo.com.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

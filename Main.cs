@@ -16,6 +16,7 @@ namespace ScreenUp
         private HotKey HK = new HotKey();
         private HotKey HK2 = new HotKey();
         private HotKey HK3 = new HotKey();
+        private HotKey HK4 = new HotKey();
 
         string month, day, year;
 
@@ -38,11 +39,15 @@ namespace ScreenUp
 
             HK2.OwnerForm = this;
             HK2.HotKeyPressed += new HotKey.HotKeyPressedEventHandler(HK2_HotKeyPressed);
-            HK2.AddHotKey(Keys.F6, HotKey.MODKEY.MOD_CONTROL, "SCBrowser");
+            HK2.AddHotKey(Keys.F7, HotKey.MODKEY.MOD_CONTROL, "SCBrowser");
 
             HK3.OwnerForm = this;
             HK3.HotKeyPressed += new HotKey.HotKeyPressedEventHandler(HK3_HotKeyPressed);
-            HK3.AddHotKey(Keys.F7, HotKey.MODKEY.MOD_CONTROL, "SilentScreenshot");
+            HK3.AddHotKey(Keys.F6, HotKey.MODKEY.MOD_CONTROL, "SilentScreenshot");
+
+            HK4.OwnerForm = this;
+            HK4.HotKeyPressed += new HotKey.HotKeyPressedEventHandler(HK4_HotKeyPressed);
+            HK4.AddHotKey(Keys.F8, HotKey.MODKEY.MOD_CONTROL, "Settings");
 
             // Date
             month = DateTime.Now.Month.ToString();
@@ -71,32 +76,28 @@ namespace ScreenUp
         }
         private void HK3_HotKeyPressed(string ID)
         {
-            Rectangle bounds;
-            Bitmap screenshot;
-            Graphics graph;
+            Generate.GenerateSCName();
 
-            bounds = Screen.PrimaryScreen.Bounds;
-            screenshot = new Bitmap(bounds.Width, bounds.Height, System.Drawing.Imaging.PixelFormat.Format32bppRgb);
-            graph = Graphics.FromImage(screenshot);
-            graph.CopyFromScreen(0, 0, 0, 0, bounds.Size, CopyPixelOperation.SourceCopy);
+            Screenshot.TakeScreenshot();
 
-            // SC Name
-            int intmonth = Convert.ToInt32(DateTime.Now.Month.ToString());
-            int intday = Convert.ToInt32(DateTime.Now.Day.ToString());          
+            Screenshot.screenshot.Save(Properties.Settings.Default.ScreenshotFolder + "/" + Generate.SCName + "-" + Properties.Settings.Default.Counter.ToString() + ".png", System.Drawing.Imaging.ImageFormat.Png);
 
-            if (intmonth < 10)
-            {
-                month = "0" + DateTime.Now.Month.ToString();
-            }
-            if (intday < 10)
-            {
-                day = "0" + DateTime.Now.Day.ToString();
-            }
-
-            screenshot.Save(Properties.Settings.Default.ScreenshotFolder + "/SC-" + year + month + day + "-" + Properties.Settings.Default.Counter.ToString() + ".png", System.Drawing.Imaging.ImageFormat.Png);
-
-            Properties.Settings.Default.Counter = Properties.Settings.Default.Counter + 1;
+            Properties.Settings.Default.Counter++;
             Properties.Settings.Default.Save();
+        }
+
+        private void HK4_HotKeyPressed(string ID)
+        {
+            Form ST = new UI.Settings();
+            ST.Show();
+        }
+
+        public static void RefreshForm(Form Form)
+        {
+            Form obj = new UI.ScreenshotBrowser();
+
+            Form.Close();
+            obj.Show();
         }
     }
 }

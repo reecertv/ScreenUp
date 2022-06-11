@@ -17,6 +17,8 @@ namespace ScreenUp.UI
         Bitmap screenshot;
         Graphics graph;
 
+        string month, day, year;
+
         public ViewScreenshot()
         {
             InitializeComponent();
@@ -24,31 +26,14 @@ namespace ScreenUp.UI
 
         private void ViewScreenshot_Load(object sender, EventArgs e)
         {
-            bounds = Screen.PrimaryScreen.Bounds;
-            screenshot = new Bitmap(bounds.Width, bounds.Height, System.Drawing.Imaging.PixelFormat.Format32bppRgb);
-            graph = Graphics.FromImage(screenshot);
-            graph.CopyFromScreen(0, 0, 0, 0, bounds.Size, CopyPixelOperation.SourceCopy);
-            pbImage.Image = screenshot;
+            Screenshot.TakeScreenshot();
+       
+            pbImage.Image = Screenshot.screenshot;
 
             // SC Name
-            string month, day, year;
-            int intmonth = Convert.ToInt32(DateTime.Now.Month.ToString());
-            int intday = Convert.ToInt32(DateTime.Now.Day.ToString());
+            Generate.GenerateSCName();
 
-            month = DateTime.Now.Month.ToString();
-            day = DateTime.Now.Day.ToString();
-            year = DateTime.Now.Year.ToString();
-
-            if (intmonth < 10) 
-            {
-                month = "0" + DateTime.Now.Month.ToString();
-            }
-            if (intday < 10)
-            {
-                day = "0" + DateTime.Now.Day.ToString();
-            }
-
-            labScreenshotName.Text = "SC-" + year + month + day;
+            labScreenshotName.Text = Generate.SCName;
 
             // Date
             string scname = labScreenshotName.Text;
@@ -79,8 +64,13 @@ namespace ScreenUp.UI
             labDate.Text = buildM.ToString() + "." + buildD.ToString() + "." + buildY.ToString();
 
             // Res
-            labRes.Text = bounds.Width + "x" + bounds.Height;
+            labRes.Text = Properties.Settings.Default.BoundsSelectedScreens.Width + "x" + Properties.Settings.Default.BoundsSelectedScreens.Height;
 
+            // Round Corners
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.Region = System.Drawing.Region.FromHrgn(RoundCorners.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+
+            // Discord
             DiscordRPC.Initialize();
         }
 
@@ -94,6 +84,17 @@ namespace ScreenUp.UI
             Clipboard.SetImage(pbImage.Image);
         }
 
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            DiscordRPC.Deinitialize();
+            this.Close();
+        }
+
         private void btnExport_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
@@ -104,6 +105,25 @@ namespace ScreenUp.UI
             {
                 pbImage.Image.Save(sfd.FileName, System.Drawing.Imaging.ImageFormat.Png);
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Generate.GenerateSCName();
+
+            Rectangle bounds;
+            Bitmap screenshot;
+            Graphics graph;
+
+            bounds = Screen.PrimaryScreen.Bounds;
+            screenshot = new Bitmap(bounds.Width, bounds.Height, System.Drawing.Imaging.PixelFormat.Format32bppRgb);
+            graph = Graphics.FromImage(screenshot);
+            graph.CopyFromScreen(0, 0, 0, 0, bounds.Size, CopyPixelOperation.SourceCopy);
+
+            screenshot.Save(Properties.Settings.Default.ScreenshotFolder + "/" + Generate.SCName + "-" + Properties.Settings.Default.Counter.ToString() + ".png", System.Drawing.Imaging.ImageFormat.Png);
+
+            Properties.Settings.Default.Counter++;
+            Properties.Settings.Default.Save();
         }
     }
 }

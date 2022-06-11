@@ -36,7 +36,7 @@ namespace ScreenUp.UI
             foreach (var item in Directory.GetFiles(folder))
             {
                 FileInfo di = new FileInfo(item);
-                if (di.Name.Contains(".png") || di.Name.Contains(".jpg") || di.Name.Contains(".jpeg") || di.Name.Contains(".ico"))
+                if (di.Name.Contains(".png") || di.Name.Contains(".jpg") || di.Name.Contains(".jpeg") || di.Name.Contains(".ico") || di.Name.Contains(".sus"))
                 {
                     var node = treeFolder.Nodes.Add(di.Name, di.Name, 0);
                     node.Tag = di;
@@ -83,7 +83,7 @@ namespace ScreenUp.UI
                     FileInfo di = new FileInfo(item);
 
 
-                    if (di.Name.Contains(".png") || di.Name.Contains(".jpg") || di.Name.Contains(".jpeg") || di.Name.Contains(".ico"))
+                    if (di.Name.Contains(".png") || di.Name.Contains(".jpg") || di.Name.Contains(".jpeg") || di.Name.Contains(".ico") || di.Name.Contains(".sus"))
                     {
                         var node = e.Node.Nodes.Add(di.Name, di.Name, 0);
                         node.Tag = di;
@@ -102,18 +102,64 @@ namespace ScreenUp.UI
 
                 e.Node.SelectedImageIndex = 0;
 
-                if (CodeFile.Contains(".png") || CodeFile.Contains(".jpg") || CodeFile.Contains(".jpeg") || CodeFile.Contains(".ico"))
+                if (CodeFile.Contains(".png") || CodeFile.Contains(".jpg") || CodeFile.Contains(".jpeg") || CodeFile.Contains(".ico") || CodeFile.Contains(".sus"))
                 {
-                    pbImage.Visible = true;
-                    pbImage.Image = Image.FromFile(CodeFile);
+                    try
+                    {
+                        pbImage.Visible = true;
+                        pbImage.Image = Image.FromFile(CodeFile);
 
-                    e.Node.SelectedImageIndex = 0;
+                        e.Node.SelectedImageIndex = 0;
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
                 }
                 else
                 {
                     pbImage.Visible = false;
                 }
             }
+        }
+
+        // Delete
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (pbImage.Image != null)
+                {
+                    pbImage.Image.Dispose();
+                }
+
+                string path = Properties.Settings.Default.ScreenshotFolder;
+                string[] files = Directory.GetFiles(path);
+
+                foreach (string file in files)
+                {
+                    File.Delete(file);
+                }
+
+                Main.RefreshForm(this);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private void btnDelete_MouseEnter(object sender, EventArgs e)
+        {
+            btnDelete.Size = new Size(75, 75); 
+        }
+        private void btnDelete_MouseLeave(object sender, EventArgs e)
+        {
+            btnDelete.Size = new Size(50, 50);
+        }
+
+        private void ScreenshotBrowser_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            pbImage.Image = null;
         }
     }
 }

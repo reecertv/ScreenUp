@@ -19,7 +19,6 @@ namespace ScreenUp
         [DllImport("kernel32", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
         private static extern short GlobalDeleteAtom(short Atom);
 
-
         public class HotKeyObject
         {
             private Keys mHotKey;
@@ -148,9 +147,8 @@ namespace ScreenUp
                         HotKeyPressed(mHotKeyList[(short)m.WParam].HotKeyID);
                     } catch (Exception ex)
                     {
-
+                        MessageBox.Show(ex.Message);
                     }
-     
                 }
             }
             return false;

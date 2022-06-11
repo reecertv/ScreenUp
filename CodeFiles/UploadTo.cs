@@ -6,6 +6,6 @@ namespace ScreenUp
 {
     public class UploadTo
     {
-        
+        string Upload;
     }
 }

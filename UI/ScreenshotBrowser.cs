@@ -58,7 +58,6 @@ namespace ScreenUp.UI
             {
                 LoadSubDirs(subdirectory);
             }
-
         }
 
         private void treeFolder_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -81,7 +80,6 @@ namespace ScreenUp.UI
                 foreach (var item in Directory.GetFiles(((DirectoryInfo)e.Node.Tag).FullName))
                 {
                     FileInfo di = new FileInfo(item);
-
 
                     if (di.Name.Contains(".png") || di.Name.Contains(".jpg") || di.Name.Contains(".jpeg") || di.Name.Contains(".ico") || di.Name.Contains(".sus"))
                     {

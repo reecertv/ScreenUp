@@ -37,6 +37,12 @@
             this.btnScreen4 = new System.Windows.Forms.Button();
             this.btnScreen5 = new System.Windows.Forms.Button();
             this.btnScreen6 = new System.Windows.Forms.Button();
+            this.labScreen1 = new System.Windows.Forms.Label();
+            this.labScreen2 = new System.Windows.Forms.Label();
+            this.labScreen3 = new System.Windows.Forms.Label();
+            this.labScreen4 = new System.Windows.Forms.Label();
+            this.labScreen5 = new System.Windows.Forms.Label();
+            this.labScreen6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnScreen1
@@ -130,12 +136,78 @@
             this.btnScreen6.UseVisualStyleBackColor = false;
             this.btnScreen6.Click += new System.EventHandler(this.btnScreen6_Click);
             // 
+            // labScreen1
+            // 
+            this.labScreen1.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labScreen1.Location = new System.Drawing.Point(12, 102);
+            this.labScreen1.Name = "labScreen1";
+            this.labScreen1.Size = new System.Drawing.Size(87, 25);
+            this.labScreen1.TabIndex = 6;
+            this.labScreen1.Text = "-/-";
+            this.labScreen1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labScreen2
+            // 
+            this.labScreen2.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labScreen2.Location = new System.Drawing.Point(105, 102);
+            this.labScreen2.Name = "labScreen2";
+            this.labScreen2.Size = new System.Drawing.Size(87, 25);
+            this.labScreen2.TabIndex = 7;
+            this.labScreen2.Text = "-/-";
+            this.labScreen2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labScreen3
+            // 
+            this.labScreen3.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labScreen3.Location = new System.Drawing.Point(198, 102);
+            this.labScreen3.Name = "labScreen3";
+            this.labScreen3.Size = new System.Drawing.Size(87, 25);
+            this.labScreen3.TabIndex = 8;
+            this.labScreen3.Text = "-/-";
+            this.labScreen3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labScreen4
+            // 
+            this.labScreen4.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labScreen4.Location = new System.Drawing.Point(291, 102);
+            this.labScreen4.Name = "labScreen4";
+            this.labScreen4.Size = new System.Drawing.Size(87, 25);
+            this.labScreen4.TabIndex = 9;
+            this.labScreen4.Text = "-/-";
+            this.labScreen4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labScreen5
+            // 
+            this.labScreen5.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labScreen5.Location = new System.Drawing.Point(384, 102);
+            this.labScreen5.Name = "labScreen5";
+            this.labScreen5.Size = new System.Drawing.Size(87, 25);
+            this.labScreen5.TabIndex = 10;
+            this.labScreen5.Text = "-/-";
+            this.labScreen5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labScreen6
+            // 
+            this.labScreen6.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labScreen6.Location = new System.Drawing.Point(477, 102);
+            this.labScreen6.Name = "labScreen6";
+            this.labScreen6.Size = new System.Drawing.Size(87, 25);
+            this.labScreen6.TabIndex = 11;
+            this.labScreen6.Text = "-/-";
+            this.labScreen6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // SelectScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.ClientSize = new System.Drawing.Size(576, 111);
+            this.ClientSize = new System.Drawing.Size(574, 138);
+            this.Controls.Add(this.labScreen6);
+            this.Controls.Add(this.labScreen5);
+            this.Controls.Add(this.labScreen4);
+            this.Controls.Add(this.labScreen3);
+            this.Controls.Add(this.labScreen2);
+            this.Controls.Add(this.labScreen1);
             this.Controls.Add(this.btnScreen6);
             this.Controls.Add(this.btnScreen5);
             this.Controls.Add(this.btnScreen4);
@@ -164,5 +236,11 @@
         private System.Windows.Forms.Button btnScreen5;
         private System.Windows.Forms.Button btnScreen6;
         private System.Windows.Forms.ImageList ilScreen;
+        private System.Windows.Forms.Label labScreen1;
+        private System.Windows.Forms.Label labScreen2;
+        private System.Windows.Forms.Label labScreen3;
+        private System.Windows.Forms.Label labScreen4;
+        private System.Windows.Forms.Label labScreen5;
+        private System.Windows.Forms.Label labScreen6;
     }
 }

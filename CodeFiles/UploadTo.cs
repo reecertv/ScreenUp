@@ -6,6 +6,11 @@ namespace ScreenUp
 {
     public class UploadTo
     {
-        string Upload;
+        public static string Upload;
+
+        public static void Null()
+        {
+            Upload = null;
+        }
     }
 }

@@ -33,6 +33,18 @@ namespace ScreenUp
                 SU.Show();                          
             }
 
+            try
+            {
+                HK.RemoveHotKey("Screenshot");
+                HK2.RemoveHotKey("SCBrowser");
+                HK3.RemoveHotKey("SilentScreenshot");
+                HK4.RemoveHotKey("Settings");
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+            }
+            
             HK.OwnerForm = this;
             HK.HotKeyPressed += new HotKey.HotKeyPressedEventHandler(HK_HotKeyPressed);
             HK.AddHotKey(Keys.F5, HotKey.MODKEY.MOD_CONTROL, "Screenshot");
@@ -62,6 +74,12 @@ namespace ScreenUp
 
             Properties.Settings.Default.LastDate = month + day + year;
             Properties.Settings.Default.Save();
+
+            // Dev
+            Console.Write("Loading to " + Environment.MachineName + " was successful");
+
+            // Form C = new UI.DevConsole();
+            // C.Show();
         }
 
         private void HK_HotKeyPressed(string ID)

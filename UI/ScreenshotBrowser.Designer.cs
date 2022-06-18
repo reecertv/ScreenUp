@@ -32,8 +32,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScreenshotBrowser));
             this.treeFolder = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.btnUpload = new System.Windows.Forms.PictureBox();
+            this.btnExport = new System.Windows.Forms.PictureBox();
             this.btnDelete = new System.Windows.Forms.PictureBox();
             this.pbImage = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.btnUpload)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
@@ -61,12 +65,44 @@
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "image.png");
             // 
+            // btnUpload
+            // 
+            this.btnUpload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.btnUpload.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpload.Image = global::ScreenUp.Properties.Resources.share;
+            this.btnUpload.InitialImage = global::ScreenUp.Properties.Resources.close;
+            this.btnUpload.Location = new System.Drawing.Point(686, 409);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(40, 40);
+            this.btnUpload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnUpload.TabIndex = 4;
+            this.btnUpload.TabStop = false;
+            this.btnUpload.Visible = false;
+            // 
+            // btnExport
+            // 
+            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.btnExport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExport.Image = global::ScreenUp.Properties.Resources.file_upload;
+            this.btnExport.InitialImage = global::ScreenUp.Properties.Resources.close;
+            this.btnExport.Location = new System.Drawing.Point(732, 409);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(40, 40);
+            this.btnExport.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnExport.TabIndex = 3;
+            this.btnExport.TabStop = false;
+            this.btnExport.Visible = false;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDelete.Image = global::ScreenUp.Properties.Resources.trash_bin;
+            this.btnDelete.InitialImage = global::ScreenUp.Properties.Resources.close;
             this.btnDelete.Location = new System.Drawing.Point(12, 399);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(50, 50);
@@ -74,8 +110,6 @@
             this.btnDelete.TabIndex = 2;
             this.btnDelete.TabStop = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            this.btnDelete.MouseEnter += new System.EventHandler(this.btnDelete_MouseEnter);
-            this.btnDelete.MouseLeave += new System.EventHandler(this.btnDelete_MouseLeave);
             // 
             // pbImage
             // 
@@ -96,16 +130,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.ClientSize = new System.Drawing.Size(784, 461);
+            this.Controls.Add(this.btnUpload);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.pbImage);
             this.Controls.Add(this.treeFolder);
             this.Font = new System.Drawing.Font("Nirmala UI", 8.25F);
             this.ForeColor = System.Drawing.Color.LightBlue;
+            this.MinimumSize = new System.Drawing.Size(700, 400);
             this.Name = "ScreenshotBrowser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ScreenUp - Screenshot Browser";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ScreenshotBrowser_FormClosed);
             this.Load += new System.EventHandler(this.ScreenshotBrowser_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.btnUpload)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.ResumeLayout(false);
@@ -118,5 +157,7 @@
         private System.Windows.Forms.PictureBox pbImage;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox btnDelete;
+        private System.Windows.Forms.PictureBox btnExport;
+        private System.Windows.Forms.PictureBox btnUpload;
     }
 }

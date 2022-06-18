@@ -26,7 +26,11 @@ namespace ScreenUp.UI
             if (Properties.Settings.Default.FirstStart == 0)
             {
                 Properties.Settings.Default.BoundsSelectedScreens = Screen.PrimaryScreen.Bounds;
-            }           
+            }
+
+            // Theme
+            Theme.Color.Line(line);
+            Theme.Color.Title(labTitle);
         }
 
         private void btnSave_Click(object sender, EventArgs e)

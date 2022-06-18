@@ -106,5 +106,29 @@ namespace ScreenUp.Properties {
                 this["Screen"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Size LasteFormSize {
+            get {
+                return ((global::System.Drawing.Size)(this["LasteFormSize"]));
+            }
+            set {
+                this["LasteFormSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("RoyalBlue")]
+        public global::System.Drawing.Color ThemeColor {
+            get {
+                return ((global::System.Drawing.Color)(this["ThemeColor"]));
+            }
+            set {
+                this["ThemeColor"] = value;
+            }
+        }
     }
 }

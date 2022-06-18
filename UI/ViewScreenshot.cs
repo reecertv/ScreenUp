@@ -13,11 +13,6 @@ namespace ScreenUp.UI
 {
     public partial class ViewScreenshot : Form
     {
-        Rectangle bounds;
-        Bitmap screenshot;
-        Graphics graph;
-
-        string month, day, year;
 
         public ViewScreenshot()
         {
@@ -29,6 +24,8 @@ namespace ScreenUp.UI
             Screenshot.TakeScreenshot();
        
             pbImage.Image = Screenshot.screenshot;
+
+            this.TopMost = true;
 
             // SC Name
             Generate.GenerateSCName();
@@ -70,6 +67,10 @@ namespace ScreenUp.UI
             this.FormBorderStyle = FormBorderStyle.None;
             this.Region = System.Drawing.Region.FromHrgn(RoundCorners.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
 
+            // Theme
+            Theme.Color.Line(line);
+            Theme.Color.Title(labTitle);
+
             // Discord
             DiscordRPC.Initialize();
         }
@@ -95,6 +96,11 @@ namespace ScreenUp.UI
             this.Close();
         }
 
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
         private void btnExport_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
@@ -111,19 +117,11 @@ namespace ScreenUp.UI
         {
             Generate.GenerateSCName();
 
-            Rectangle bounds;
-            Bitmap screenshot;
-            Graphics graph;
-
-            bounds = Screen.PrimaryScreen.Bounds;
-            screenshot = new Bitmap(bounds.Width, bounds.Height, System.Drawing.Imaging.PixelFormat.Format32bppRgb);
-            graph = Graphics.FromImage(screenshot);
-            graph.CopyFromScreen(0, 0, 0, 0, bounds.Size, CopyPixelOperation.SourceCopy);
-
-            screenshot.Save(Properties.Settings.Default.ScreenshotFolder + "/" + Generate.SCName + "-" + Properties.Settings.Default.Counter.ToString() + ".png", System.Drawing.Imaging.ImageFormat.Png);
-
+            byte[] img = (byte[])(new ImageConverter()).ConvertTo(pbImage.Image, typeof(byte[]));
+            File.WriteAllBytes(Properties.Settings.Default.ScreenshotFolder + "/" + Generate.SCName + "-" + Properties.Settings.Default.Counter.ToString() + ".irt", img);
+        
             Properties.Settings.Default.Counter++;
-            Properties.Settings.Default.Save();
+            Properties.Settings.Default.Save();           
         }
     }
 }

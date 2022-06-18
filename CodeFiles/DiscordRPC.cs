@@ -23,12 +23,12 @@ namespace ScreenUp
 			//Subscribe to events
 			client.OnReady += (sender, e) =>
 			{
-				Console.WriteLine("Received Ready from user {0}", e.User.Username);
+				Console.Write("Received Ready from user " + e.User.Username);
 			};
 
 			client.OnPresenceUpdate += (sender, e) =>
 			{
-				Console.WriteLine("Received Update! {0}", e.Presence);
+				Console.Write("Received Update!");
 			};
 
 			//Connect to the RPC

@@ -145,10 +145,11 @@ namespace ScreenUp
                     try
                     {
                         HotKeyPressed(mHotKeyList[(short)m.WParam].HotKeyID);
-                    } catch (Exception ex)
+                    } 
+                    catch
                     {
-                        MessageBox.Show(ex.Message);
-                    }
+                        Console.Write("");
+                    }             
                 }
             }
             return false;

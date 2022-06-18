@@ -52,6 +52,5 @@ namespace ScreenUp
             }
             return cipherText;
         }
-
     }
 }

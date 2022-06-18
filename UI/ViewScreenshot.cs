@@ -13,7 +13,6 @@ namespace ScreenUp.UI
 {
     public partial class ViewScreenshot : Form
     {
-
         public ViewScreenshot()
         {
             InitializeComponent();

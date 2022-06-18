@@ -440,6 +440,5 @@ namespace ScreenUp.UI
                     return allFriendlyNames.ToArray()[index];
             return null;
         }
-
     }
 }

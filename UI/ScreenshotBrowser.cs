@@ -127,6 +127,7 @@ namespace ScreenUp.UI
 
                         btnUpload.Visible = true;
                         btnExport.Visible = true;
+                        btnDelete.Visible = true;
                     }
                     catch (Exception ex)
                     {
@@ -147,6 +148,7 @@ namespace ScreenUp.UI
 
                         btnUpload.Visible = true;
                         btnExport.Visible = true;
+                        btnDelete.Visible = true;
                     }
                     catch (Exception ex)
                     {
@@ -173,13 +175,15 @@ namespace ScreenUp.UI
                     pbImage.Image.Dispose();
                 }
 
-                string path = Properties.Settings.Default.ScreenshotFolder;
-                string[] files = Directory.GetFiles(path);
+                //string path = Properties.Settings.Default.ScreenshotFolder;
+                //string[] files = Directory.GetFiles(path);
 
-                foreach (string file in files)
-                {
-                    File.Delete(file);
-                }
+                //foreach (string file in files)
+                //{
+                //    File.Delete(file);
+                //}
+
+                File.Delete(SelectedFile);
 
                 Main.RefreshForm(this);
             }
@@ -206,6 +210,11 @@ namespace ScreenUp.UI
             {
                 pbImage.Image.Save(sfd.FileName, System.Drawing.Imaging.ImageFormat.Png);
             }
+        }
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }

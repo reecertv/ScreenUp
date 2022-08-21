@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IWshRuntimeLibrary;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -44,6 +45,40 @@ namespace ScreenUp.UI
                 Properties.Settings.Default.User = txtUsername.Text;
                 Properties.Settings.Default.FirstStart = 1;
                 Properties.Settings.Default.Save();
+
+                // StartUp
+                WshShell wshShell = new WshShell();
+                IWshRuntimeLibrary.IWshShortcut shortcut;
+                string startUpFolderPath =
+                  Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+
+                shortcut =
+                  wshShell.CreateShortcut(
+                    startUpFolderPath + "\\" +
+                    Application.ProductName + ".lnk");
+
+                shortcut.TargetPath = Application.ExecutablePath;
+                shortcut.WorkingDirectory = Application.StartupPath;
+                shortcut.Description = "Launch";
+                // shortcut.IconLocation = Application.StartupPath + @"\App.ico";
+                shortcut.Save();
+
+                // Desktop
+                WshShell wshShell2 = new WshShell();
+                IWshRuntimeLibrary.IWshShortcut shortcut2;
+                string DesktopFolderPath =
+                  Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+                shortcut2 =
+                  wshShell2.CreateShortcut(
+                    DesktopFolderPath + "\\" +
+                    Application.ProductName + ".lnk");
+
+                shortcut2.TargetPath = Application.ExecutablePath;
+                shortcut2.WorkingDirectory = Application.StartupPath;
+                shortcut2.Description = "Launch";
+                // shortcut2.IconLocation = Application.StartupPath + @"\App.ico";
+                shortcut2.Save();
 
                 this.Hide();
             }          

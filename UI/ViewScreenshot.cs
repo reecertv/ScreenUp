@@ -86,7 +86,7 @@ namespace ScreenUp.UI
 
         private void btnUpload_Click(object sender, EventArgs e)
         {
-            btnUpload = null;
+            UploadTo.Imgur("E:/Game Zusatz/ScreenUp/apex.jpg", "Test");
         }
 
         private void btnClose_Click(object sender, EventArgs e)

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Setup));
             this.labTitle = new System.Windows.Forms.Label();
             this.line = new System.Windows.Forms.TextBox();
             this.labUsername = new System.Windows.Forms.Label();
@@ -197,6 +198,7 @@
             this.Font = new System.Drawing.Font("Nirmala UI", 8.25F);
             this.ForeColor = System.Drawing.Color.LightBlue;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Setup";

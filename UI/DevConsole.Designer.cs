@@ -110,7 +110,7 @@
             this.txtInput.Location = new System.Drawing.Point(12, 417);
             this.txtInput.Name = "txtInput";
             this.txtInput.Size = new System.Drawing.Size(360, 32);
-            this.txtInput.TabIndex = 1;
+            this.txtInput.TabIndex = 1;          
             this.txtInput.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtInput_DragDrop);
             this.txtInput.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtInput_DragEnter);
             this.txtInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInput_KeyDown);

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using IWshRuntimeLibrary;
 
 namespace ScreenUp
 {
@@ -78,8 +79,8 @@ namespace ScreenUp
             // Dev
             Console.Write("Loading to " + Environment.MachineName + " was successful");
 
-            // Form C = new UI.DevConsole();
-            // C.Show();
+            //Form C = new UI.DevConsole();
+            //C.Show();
         }
 
         private void HK_HotKeyPressed(string ID)
@@ -98,7 +99,7 @@ namespace ScreenUp
 
             Screenshot.TakeScreenshot();
 
-            Screenshot.screenshot.Save(Properties.Settings.Default.ScreenshotFolder + "/" + Generate.SCName + "-" + Properties.Settings.Default.Counter.ToString() + ".png", System.Drawing.Imaging.ImageFormat.Png);
+            Screenshot.screenshot.Save(Properties.Settings.Default.ScreenshotFolder + "/" + Generate.SCName + "-" + Properties.Settings.Default.Counter.ToString() + ".irt", System.Drawing.Imaging.ImageFormat.Png);
 
             Properties.Settings.Default.Counter++;
             Properties.Settings.Default.Save();
